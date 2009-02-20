@@ -1,13 +1,4 @@
-    
-def threes_and_fives(max):
-  for x in range(1,max):
-    if x % 3 == 0 or x % 5 == 0:
-      yield x
-      
-  
-
-
-print reduce(lambda x, y: x+y, threes_and_fives(1000))
+print reduce(lambda x, y: x+y, [n for n in range(1,1000) if n % 3 == 0 or n % 5 == 0])
     
     
     
