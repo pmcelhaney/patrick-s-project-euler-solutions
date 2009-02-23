@@ -7,11 +7,11 @@ def prime_factors(n):
 	i = 2
 	while i < n:
 	
-	  i = i + 1
-	  
 	  if n % i == 0:
 			return [i] + prime_factors(n / i)
+			
+	  i = i + 1
 	
-	return [i]
+	return [n]
 
-print prime_factors(600851475143)
+print prime_factors(120)
