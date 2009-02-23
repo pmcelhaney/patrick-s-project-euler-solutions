@@ -10,8 +10,8 @@ def prime_factors(n):
 	  i = i + 1
 	  
 	  if n % i == 0:
-			return i, prime_factors(n / i)
+			return [i] + prime_factors(n / i)
 	
-	return n
+	return [i]
 
-print prime_factors(120)
+print prime_factors(600851475143)
