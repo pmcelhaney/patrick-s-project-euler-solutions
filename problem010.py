@@ -13,4 +13,6 @@ input = """
 
 data = [map(int, row.split(" ")) for row in input.split('\n') if len(row) > 0]
 
-print data
+# print [row for row in data]
+print max([max([sum(row[x:x+4]) for x in xrange(0,len(row)-4)]) for row in data])
+        
