@@ -1,16 +1,3 @@
-input = """
-57 12 81 02 54 82 30 22 07 46
-77 13 58 37 02 77 17 27 68 71
-34 89 42 81 09 80 75 74 11 65
-95 60 07 30 43 60 57 28 71 42
-05 80 70 39 01 53 92 27 94 77
-61 38 62 65 95 18 78 24 92 93
-96 69 51 98 81 25 99 88 25 65
-18 80 90 91 74 70 84 51 47 72
-92 14 39 37 89 90 69 34 38 73
-62 42 14 12 86 95 99 10 97 52
-"""
-
 input ="""
 00 01 02 03 04 05 06 07 08 09
 10 11 12 13 14 15 16 17 18 19
@@ -43,4 +30,8 @@ def find_rows(data):
             if x >= 3 and y >= 3:
                 yield [data[x-offset][y-offset] for offset in xrange(0,4)] 
                 
-print tuple(find_rows(data))
+def product(iter):
+    return reduce(lambda x,y: x*y, iter)                
+                
+print max(map(product, find_rows(data)))
+
