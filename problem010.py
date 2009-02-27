@@ -11,8 +11,36 @@ input = """
 62 42 14 12 86 95 99 10 97 52
 """
 
+input ="""
+00 01 02 03 04 05 06 07 08 09
+10 11 12 13 14 15 16 17 18 19
+20 21 22 23 24 25 26 27 28 29
+30 31 32 33 34 35 36 37 38 39
+40 41 42 43 44 45 46 47 48 49
+50 51 52 53 54 55 56 57 58 59
+60 61 62 63 64 65 66 67 68 69
+70 71 72 73 74 75 76 77 78 79
+80 81 82 83 84 85 86 87 88 89
+90 91 92 93 94 95 96 97 98 99
+"""
+
 data = [map(int, row.split(" ")) for row in input.split('\n') if len(row) > 0]
 
-# print [row for row in data]
-print max([max([sum(row[x:x+4]) for x in xrange(0,len(row)-4)]) for row in data])
-        
+
+
+
+def find_rows(data):
+    height = len(data)
+    width = len(data[0])
+    for x in xrange(0, height):
+        for y in xrange(0, width):
+            if y+4 <= height:
+                yield [data[x][y+offset] for offset in xrange(0,4)]
+            if x+4 <= height:
+                yield [data[x+offset][y] for offset in xrange(0,4)]    
+            if y+4 <= height and x+4 <= width:    
+                yield [data[x+offset][y+offset] for offset in xrange(0,4)]      
+            if x >= 3 and y >= 3:
+                yield [data[x-offset][y-offset] for offset in xrange(0,4)] 
+                
+print tuple(find_rows(data))
