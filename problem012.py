@@ -56,9 +56,6 @@ def first_triangle_number_with_more_than_n_factors(n):
         count = len(factors(i))
         if  count > n: 
             return i
-        #elif count > max:
-        #    max = count
-        #    print count, i
         
 class FactorsTest(unittest.TestCase):
     
@@ -94,6 +91,6 @@ class SolutionTest(unittest.TestCase):
         self.assertEquals(28, first_triangle_number_with_more_than_n_factors(5))
     
 if __name__ == '__main__':
-    unittest.main()    
-    # print first_triangle_number_with_more_than_n_factors(200)
+    # unittest.main()    
+    print first_triangle_number_with_more_than_n_factors(500)
     
