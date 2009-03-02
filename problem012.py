@@ -25,20 +25,18 @@ import unittest
 
 def all_factors(n):
 	i = 1
-	while i <= n:
+	while i <= n/2:
 	
 	  if n % i == 0:
 			yield i
 	  i = i + 1
+	yield n
 	
 
 def factors(n):
-    if n == 1:  
-        return (1,)
-    else: 
-        return tuple(all_factors(n))
+    return tuple(all_factors(n))
 
-def triangle_numbers(max):
+def triangle_numbers(max=1000000):
     i = 1
     next = 0
     while i <= max:
@@ -48,7 +46,7 @@ def triangle_numbers(max):
 
 
 def first_triangle_number_with_more_than_n_factors(n):
-    for i in triangle_numbers(1000):
+    for i in triangle_numbers():
         if len(factors(i)) > n: 
             return i
         
@@ -87,4 +85,5 @@ class SolutionTest(unittest.TestCase):
     
 if __name__ == '__main__':
     unittest.main()    
+    # print first_triangle_number_with_more_than_n_factors(500)
     
