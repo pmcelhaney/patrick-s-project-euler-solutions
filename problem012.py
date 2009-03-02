@@ -22,19 +22,16 @@
 # divisors?
 
 import unittest
+from math import sqrt
 
 def all_factors(n):
 	i = 1
-	if n == 1:
-	    yield 1
-	max = n / 2 + 1
-	while i < max:
+	while i <= sqrt(n):
 	  if n % i == 0:
 			yield i
 			counterpart = n / i    
 			if counterpart != i:
 			    yield counterpart
-			max = counterpart
 	  i = i + 1
 	
 
