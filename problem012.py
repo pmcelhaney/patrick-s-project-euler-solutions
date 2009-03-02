@@ -25,12 +25,17 @@ import unittest
 
 def all_factors(n):
 	i = 1
-	while i <= n/2:
-	
+	if n == 1:
+	    yield 1
+	max = n / 2 + 1
+	while i < max:
 	  if n % i == 0:
 			yield i
+			counterpart = n / i    
+			if counterpart != i:
+			    yield counterpart
+			max = counterpart
 	  i = i + 1
-	yield n
 	
 
 def factors(n):
@@ -46,29 +51,34 @@ def triangle_numbers(max=1000000):
 
 
 def first_triangle_number_with_more_than_n_factors(n):
+    max = 0
     for i in triangle_numbers():
-        if len(factors(i)) > n: 
+        count = len(factors(i))
+        if  count > n: 
             return i
+        #elif count > max:
+        #    max = count
+        #    print count, i
         
 class FactorsTest(unittest.TestCase):
     
     def test_1(self):
-        self.assertEquals((1,), factors(1))
+        self.assertEquals([1,], sorted(factors(1)))
         
     def test_3(self):
-        self.assertEquals((1,3), factors(3))
+        self.assertEquals([1,3], sorted(factors(3)))
     
     def test_6(self):
-        self.assertEquals((1,2,3,6), factors(6))    
+        self.assertEquals([1,2,3,6], sorted(factors(6)))    
     
     def test_16(self):
-        self.assertEquals((1,2,4,8,16), factors(16))    
+        self.assertEquals([1,2,4,8,16], sorted(factors(16)))    
     
     def test_21(self):
-        self.assertEquals((1,3,7,21), factors(21))    
+        self.assertEquals([1,3,7,21], sorted(factors(21)))    
     
     def test_28(self):
-        self.assertEquals((1,2,4,7,14,28), factors(28))    
+        self.assertEquals([1,2,4,7,14,28], sorted(factors(28)))    
     
 
 class TriangleNumbersTest(unittest.TestCase):
@@ -85,5 +95,5 @@ class SolutionTest(unittest.TestCase):
     
 if __name__ == '__main__':
     unittest.main()    
-    # print first_triangle_number_with_more_than_n_factors(500)
+    # print first_triangle_number_with_more_than_n_factors(200)
     
