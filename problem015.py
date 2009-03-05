@@ -11,20 +11,18 @@ cache = {(0,0) : 1}
 def count_paths(x,y):
     global cache
     
+    if x == 0 or y == 0:
+        return 1
+    
     if (x,y) in cache:
         return cache[(x,y)]
+        
+    paths = count_paths(x-1, y) + count_paths(x, y-1) 
     
-    if (y,x) in cache:
-        return cache[(y,x)]
-     
-    paths = 0
-    
-    if x > 0:
-        paths = paths + count_paths(x-1, y)
-    if y > 0: 
-        paths = paths + count_paths(x, y-1)
-         
     cache[(x,y)] = paths
+    cache[(y,x)] = paths
+    
     return paths
     
 print count_paths(20,20) 
+
