@@ -6,7 +6,7 @@
 # How many routes are there through a 20×20 grid?
 
 
-cache = {(0,0) : 0}
+cache = {(0,0) : 1}
 
 def count_paths(x,y):
     global cache
@@ -25,7 +25,6 @@ def count_paths(x,y):
         paths = paths + count_paths(x, y-1)
          
     cache[(x,y)] = paths
-    
     return paths
     
 print count_paths(20,20) 
